@@ -1,9 +1,11 @@
 import { convertPixelsToUnit } from "../../utils/pixelsToUnit";
 
-const convertInputSizeToPixels = (sizeParams) => {
-	[sizeParams.inPixels.width, sizeParams.inPixels.height, sizeParams.ratio] =
-		convertPixelsToUnit(sizeParams);
-	return sizeParams;
+const convertInputSizeToPixels = ({ width, height }) => {
+	const [widthInPixels, heightInPixels, ratio] = convertPixelsToUnit({
+		width,
+		height,
+	});
+	return { widthInPixels, heightInPixels, ratio };
 };
 
 export default convertInputSizeToPixels;

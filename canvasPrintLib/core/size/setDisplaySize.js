@@ -21,7 +21,7 @@ const setDisplaySize = (ratio, parentContainer) => {
 		displayHeight = displayWidth / ratio;
 	}
 
-	console.log(ratio);
+
 	return { width: displayWidth, height: displayHeight };
 };
 

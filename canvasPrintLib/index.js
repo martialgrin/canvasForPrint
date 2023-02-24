@@ -13,27 +13,29 @@
 
 // https://github.com/ertdfgcvb/Sequencer/blob/master/src/sequencer.js
 
-import size from "./core/size";
-import { defaultParams } from "./default";
+import Size from "./core/size";
 import { extendDefaultParams } from "./utils";
+import defaults from "./defaults.js";
 
 export const canvasForPrint = (PARAMS) => {
-	PARAMS = { ...defaultParams, ...PARAMS };
-	console.log(PARAMS.size);
-	const CANVASP = PARAMS.elem;
-	const ctx = CANVASP.getContext(PARAMS.context);
+	let settings = { ...defaults, ...PARAMS };
+	const CANVASP = settings.elem;
+	const ctx = CANVASP.getContext(settings.context);
+
+	const size = Size({
+		width: settings.width,
+		height: settings.height,
+		unit: settings.unit,
+		dpi: settings.dpi,
+		ratio: settings.ratio,
+		CANVASP,
+		container: settings.container,
+	});
 
 	const init = () => {
-		PARAMS.size = size.convertInputSizeToPixels(PARAMS.size);
-		const displaySize = size.setDisplaySize(
-			PARAMS.size.ratio,
-			PARAMS.container
-		);
-		CANVASP.width = PARAMS.size.inPixels.width;
-		CANVASP.height = PARAMS.size.inPixels.height;
-		CANVASP.style.width = displaySize.width + "px";
-		CANVASP.style.height = displaySize.height + "px";
-		console.log(PARAMS.elem.style.width);
+		size.setSize();
+		console.log(size.getCanvasSize());
+		// ({settings.widthInPixels, settings.heightInPixels, ...settings} = size.getCanvasSize())
 		create();
 	};
 
@@ -42,5 +44,11 @@ export const canvasForPrint = (PARAMS) => {
 		PARAMS.container.appendChild(CANVASP);
 	};
 
-	return { init, PARAMS, ctx };
+	return {
+		init,
+		PARAMS,
+		ctx,
+		width: settings.width,
+		height: size.height,
+	};
 };
