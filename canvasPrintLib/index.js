@@ -13,13 +13,18 @@
 
 // https://github.com/ertdfgcvb/Sequencer/blob/master/src/sequencer.js
 
+import { saveFile } from "./core/saveFile/saveFile";
 import Size from "./core/size";
 import defaults from "./defaults.js";
+import { Container } from "./UI";
 
 export const canvasForPrint = (PARAMS) => {
 	let settings = { ...defaults, ...PARAMS };
 	const CANVASP = settings.elem;
+	const GUI = Container();
+	const saveFileButton = GUI.saveButton;
 	const ctx = CANVASP.getContext(settings.context);
+	let isSavingEvent = new Event("saving", { bubbles: true });
 
 	const size = Size({
 		width: settings.width,
@@ -31,12 +36,25 @@ export const canvasForPrint = (PARAMS) => {
 		container: settings.container,
 	});
 
+	const initListener = () => {
+		saveFileButton.addEventListener("click", saveFileHandler);
+	};
+	const saveFileHandler = async () => {
+		window.dispatchEvent(isSavingEvent);
+		await saveFile();
+		console.log("done from fileSave");
+	};
+
 	const init = () => {
 		size.setSize();
 		const { width, height } = size.getCanvasSize();
 		settings.widthInPixels = width;
 		settings.heightInPixels = height;
 		create();
+		GUI.init();
+		GUI.update({ ...settings });
+		initListener();
+
 		return { ...settings };
 	};
 

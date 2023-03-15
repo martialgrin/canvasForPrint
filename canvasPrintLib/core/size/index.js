@@ -9,8 +9,9 @@ const Size = (
 	const CANVASP = settings.CANVASP;
 	const setSize = () => {
 		const displaySize = calcSize();
+
 		CANVASP.width = settings.widthInPixels;
-		CANVASP.height = settings.widthInPixels;
+		CANVASP.height = settings.heightInPixels;
 		CANVASP.style.width = displaySize.width + "px";
 		CANVASP.style.height = displaySize.height + "px";
 	};

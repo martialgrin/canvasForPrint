@@ -1,6 +1,8 @@
 const setDisplaySize = (ratio, parentContainer) => {
-	const parentWidth = parentContainer.offsetWidth;
-	let parentHeight = parentContainer.offsetHeight;
+	const parentStyle = getComputedStyle(parentContainer);
+	const parentWidth = parseFloat(parentStyle.width);
+
+	let parentHeight = parseFloat(parentStyle.height);
 	const windowWidth = window.innerWidth;
 	const windowHeight = window.innerHeight;
 
@@ -20,7 +22,6 @@ const setDisplaySize = (ratio, parentContainer) => {
 		displayWidth = Math.min(windowWidth, parentWidth);
 		displayHeight = displayWidth / ratio;
 	}
-
 
 	return { width: displayWidth, height: displayHeight };
 };
