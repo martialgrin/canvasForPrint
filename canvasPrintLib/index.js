@@ -14,7 +14,6 @@
 // https://github.com/ertdfgcvb/Sequencer/blob/master/src/sequencer.js
 
 import Size from "./core/size";
-import { extendDefaultParams } from "./utils";
 import defaults from "./defaults.js";
 
 export const canvasForPrint = (PARAMS) => {
@@ -34,21 +33,26 @@ export const canvasForPrint = (PARAMS) => {
 
 	const init = () => {
 		size.setSize();
-		console.log(size.getCanvasSize());
-		// ({settings.widthInPixels, settings.heightInPixels, ...settings} = size.getCanvasSize())
+		const { width, height } = size.getCanvasSize();
+		settings.widthInPixels = width;
+		settings.heightInPixels = height;
 		create();
+		return { ...settings };
 	};
 
 	const create = () => {
-		CANVASP.id = PARAMS.id;
-		PARAMS.container.appendChild(CANVASP);
+		CANVASP.id = settings.id;
+		settings.container.appendChild(CANVASP);
 	};
 
+	window.onresize = () => {
+		size.setSize();
+	};
+	init();
+
 	return {
-		init,
-		PARAMS,
+		...settings,
+
 		ctx,
-		width: settings.width,
-		height: size.height,
 	};
 };

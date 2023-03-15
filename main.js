@@ -5,16 +5,25 @@ window.onload = () => {
 
 	const canvas = canvasForPrint({
 		container,
-		width: 100,
-		height: 100,
+		width: 200,
+		height: 200,
 	});
-	canvas.init();
-	canvas.ctx.fillStyle = "#f00";
-	console.table(canvas);
-	canvas.ctx.fillRect(0, 0, canvas.width, canvas.height);
+	console.log(canvas);
 
 	const draw = () => {
-		console.log(canvas.width);
+		console.log(canvas.widthInPixels);
+
+		canvas.ctx.fillStyle = "#f00";
+		canvas.ctx.fillRect(0, 0, canvas.widthInPixels, canvas.heightInPixels / 2);
+		canvas.ctx.fill();
+		canvas.ctx.fillStyle = "#00f";
+		canvas.ctx.fillRect(
+			0,
+			canvas.heightInPixels / 2,
+			canvas.widthInPixels,
+			canvas.heightInPixels
+		);
+
 		requestAnimationFrame(draw.bind(this));
 	};
 	draw();
