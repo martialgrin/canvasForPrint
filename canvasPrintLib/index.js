@@ -1,12 +1,12 @@
 /****** 
  * 
-@param {object} PARAMS - Somebody's name. * 
-@param {object} PARAMS.size -  size properties
-@param {number} PARAMS.size.width -  width of the canvas (default: 210)
-@param {number} PARAMS.size.height -  height of the canvas (default: 297)
-@param {number} PARAMS.size.dpi -  resolution of the canvas in dpi (default: 300)
-@param {string} PARAMS.size.unit -  unit of measure of the canvas (default: mm)
-@param {object} PARAMS.options -  options for the canvas
+@param {object} userSettings - Insert your settings
+@param {number} userSettings.width - width of your desired canvas (in unit setted (default:mm))
+@param {number} userSettings.height -  height of your desired canvas (in unit setted (default:mm))
+@param {number} userSettings.dpi -  resolution of the canvas in dpi (default: 300)
+@param {string} userSettings.unit -  unit of measure of the canvas (default: mm)
+@param {object} userSettings.container -  container of your object
+
 @param {boolean} PARAMS.options.bleeds - define if you want some bleeds or not
  * 
  * ******/
@@ -18,13 +18,32 @@ import Size from "./core/size";
 import defaults from "./defaults.js";
 import { Container } from "./UI";
 
-export const canvasForPrint = (PARAMS) => {
-	let settings = { ...defaults, ...PARAMS };
+export const canvasForPrint = (userSettings) => {
+	let settings = { ...defaults, ...userSettings };
 	const CANVASP = settings.elem;
 	const GUI = Container();
 	const saveFileButton = GUI.saveButton;
 	const ctx = CANVASP.getContext(settings.context);
-	let isSavingEvent = new Event("saving", { bubbles: true });
+	const events = [];
+
+	const on = (eventName, fn) => {
+		if (!events[eventName]) {
+			events[eventName] = [];
+		}
+		events[eventName].push(fn);
+		return () => {
+			events[eventName] = events[eventName].filter((eventFn) => fn !== eventFn);
+		};
+	};
+	const emit = (eventName, data) => {
+		const event = events[eventName];
+		if (event) {
+			event.forEach((fn) => {
+				fn.call(null, data);
+			});
+		}
+		console.log(events);
+	};
 
 	const size = Size({
 		width: settings.width,
@@ -40,9 +59,9 @@ export const canvasForPrint = (PARAMS) => {
 		saveFileButton.addEventListener("click", saveFileHandler);
 	};
 	const saveFileHandler = async () => {
-		window.dispatchEvent(isSavingEvent);
+		emit("startSaving", "hello");
 		await saveFile();
-		console.log("done from fileSave");
+		emit("saved", "hello");
 	};
 
 	const init = () => {
@@ -54,7 +73,6 @@ export const canvasForPrint = (PARAMS) => {
 		GUI.init();
 		GUI.update({ ...settings });
 		initListener();
-
 		return { ...settings };
 	};
 
@@ -65,12 +83,16 @@ export const canvasForPrint = (PARAMS) => {
 
 	window.onresize = () => {
 		size.setSize();
+		const { width, height } = size.getCanvasSize();
+		settings.widthInPixels = width;
+		settings.heightInPixels = height;
+		GUI.update({ ...settings });
 	};
 	init();
 
 	return {
 		...settings,
-
+		on,
 		ctx,
 	};
 };

@@ -10,7 +10,7 @@ export default {
 	ratio: null,
 
 	//container options
-	parent: document.body,
+	container: document.body,
 	id: "canvas-for-print",
 	pixelDensity: window.devicePixelRatio,
 	context: "2d",

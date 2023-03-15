@@ -1,17 +1,11 @@
 {
-  "name": "canvasprint",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^4.1.0"
-  },
-  "dependencies": {
-    "streamsaver": "^2.0.6"
-  }
+	"name": "canvasforprint",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {},
+	"devDependencies": {},
+	"dependencies": {
+		"streamsaver": "^2.0.6"
+	}
 }
