@@ -1,5 +1,3 @@
-import { canvasForPrint } from "./../canvasPrintLib";
-
 window.onload = () => {
 	const container = document.getElementById("app");
 	let isLoaded = false;
@@ -12,7 +10,7 @@ window.onload = () => {
 	const canvas = canvasForPrint({
 		container,
 		width: 895,
-		height: 1280,
+		height: 100,
 		unit: "mm",
 	});
 
