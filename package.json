@@ -3,8 +3,25 @@
 	"private": false,
 	"version": "0.0.1",
 	"type": "module",
-	"scripts": {},
-	"devDependencies": {},
+	"files": [
+		"dist"
+	],
+	"main": "./dist/canvasforprint.umd.js",
+	"module": "./dist/canvasforprint.es.js",
+	"exports": {
+		".": {
+			"import": "./dist/canvasforprint.es.js",
+			"require": "./dist/canvasforprint.umd.js"
+		}
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"vite": "^4.1.4"
+	},
 	"dependencies": {
 		"streamsaver": "^2.0.6"
 	}
