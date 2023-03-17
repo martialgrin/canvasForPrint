@@ -1,0 +1,18 @@
+body, html{
+  margin:0;
+  padding:0;
+  min-height: 100vh;
+  background-color: black;
+}
+
+#app{  
+padding:1rem;
+height:100%;
+display: flex;
+justify-content: center;
+align-items: center;}
+
+canvas{
+  background-color:#fff;
+
+}
