@@ -5,9 +5,10 @@ window.onload = () => {
 
 	const canvas = canvasForPrint({
 		container,
-		width: 1000,
-		height: 500,
+		width: 896,
+		height: 1280,
 		unit: "mm",
+		dpi: "72",
 	});
 
 	const generator = new App({ canvas, pane });

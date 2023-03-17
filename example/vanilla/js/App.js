@@ -15,12 +15,14 @@ class App {
 		this.margin = PARAMS.margin;
 		this.numCols = PARAMS.columns;
 		this.numRows = PARAMS.rows;
+		this.offset = PARAMS.offset;
 		this.update();
 	}
 	initListeners() {
 		this.canvas.on("startSaving", this.update.bind(this));
 		this.canvas.on("saved", this.update.bind(this));
 		this.pane.on("change", (ev) => {
+			console.log(ev);
 			switch (ev.presetKey) {
 				case "columns":
 					this.numCols = ev.value;
@@ -34,6 +36,10 @@ class App {
 					this.margin = ev.value;
 					this.update();
 					break;
+				case "offset":
+					this.offset = ev.value;
+					this.update();
+
 				default:
 					break;
 			}
@@ -45,6 +51,8 @@ class App {
 	}
 
 	createSquares() {
+		this.ctx.save();
+		this.ctx.translate(this.offset.x, this.offset.y);
 		this.squareArray = [];
 		for (
 			let i = this.margin, col = 0;
@@ -70,6 +78,7 @@ class App {
 				square.setup();
 			}
 		}
+		this.ctx.restore();
 	}
 	draw() {}
 }

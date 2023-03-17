@@ -9,7 +9,6 @@ window.onload = () => {
 		unit: "mm",
 	});
 
-	console.log("hello");
 
 	const elem = new p5.Element(canvas.elem);
 	console.log(elem);
