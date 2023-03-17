@@ -1,22 +1,33 @@
 window.onload = () => {
 	const container = document.getElementById("app");
-
+	const endRecordingFrames = 1000;
 	const canvas = CanvasForPrint({
 		container,
-		width: 896,
+		width: 895,
 		height: 1280,
 		unit: "mm",
-		dpi: "72",
+		dpi: "300",
 		mode: "sequence",
+		recordingFrames: { start: 0, end: endRecordingFrames, current: 0 },
 	});
 
-	canvas.on("saving", () => {
-		console.log("isSaving from main");
-	});
+	const ctx = canvas.ctx;
+	let color = 0;
+
+	canvas.on("saving", () => {});
 	canvas.on("saved", () => {
 		console.log("image is saved");
 	});
 	canvas.on("saveNextFrame", (e) => {
-		console.log(e);
+		update();
+		canvas.saveCanvas();
 	});
+
+	const update = () => {
+		ctx.fillStyle = "hsl(" + color + ", 100% ,50% )";
+		ctx.fillRect(0, 0, canvas.widthInPixels, canvas.heightInPixels);
+		ctx.fill();
+		color += 360 / endRecordingFrames;
+	};
+	update();
 };
