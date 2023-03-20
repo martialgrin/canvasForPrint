@@ -2,6 +2,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import css from "rollup-plugin-import-css";
+import scss from "rollup-plugin-scss";
 
 export default {
 	input: ["lib/index.js"],
@@ -26,5 +27,10 @@ export default {
 			sourcemap: true,
 		},
 	],
-	plugins: [nodeResolve(), terser(), commonjs(), css()],
+	plugins: [
+		nodeResolve(),
+		terser(),
+		commonjs(),
+		scss({ fileName: "bundle.css" }),
+	],
 };

@@ -9,7 +9,7 @@ width (Number): The width of the canvas in the unit set (default: mm).
 
 height (Number): The height of the canvas in the unit set (default: mm).
 
-dpi (Number): The resolution of the canvas in dpi (default: 300).
+ppi (Number): The resolution of the canvas in ppi (default: 300).
 
 unit (String): The unit of measure for the canvas (default: mm).
 
@@ -26,7 +26,7 @@ width (Number): The width of the canvas in the unit set (default: mm).
 
 height (Number): The height of the canvas in the unit set (default: mm).
 
-dpi (Number): The resolution of the canvas in dpi (default: 300).
+ppi (Number): The resolution of the canvas in ppi (default: 300).
 
 widthInPixels (Number): The width of the canvas in pixels.
 

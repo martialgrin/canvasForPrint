@@ -9,7 +9,7 @@ window.onload = () => {
 		width: 896,
 		height: 1280,
 		unit: "mm",
-		dpi: "72",
+		ppi: "72",
 	});
 
 	const generator = new App({ canvas, pane });

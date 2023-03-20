@@ -270,7 +270,7 @@ const H = C,
 		{ unit: "m", multipleToInches: 0.0254, label: "meters" },
 		{ unit: "in", multipleToInches: 1, label: "inches" },
 	],
-	F = ({ unit: a, width: e, height: t, dpi: s, ratio: r }) => {
+	F = ({ unit: a, width: e, height: t, ppi: s, ratio: r }) => {
 		let p = 1;
 		for (let o in M)
 			if (a == M[o].unit) {
@@ -302,7 +302,7 @@ const H = C,
 		(document.body.style.minHeight = window.innerHeight),
 			(document.body.style.minWidth = window.innerWidth);
 	},
-	B = (a = { width, height, CANVASP, container, unit, dpi, ratio }) => {
+	B = (a = { width, height, CANVASP, container, unit, ppi, ratio }) => {
 		let e = { ...a, widthInPixels: 0, heightInPixels: 0 };
 		const t = e.CANVASP,
 			s = () => {
@@ -332,7 +332,7 @@ const H = C,
 		elem: document.createElement("canvas"),
 		width: 210,
 		height: 297,
-		dpi: 300,
+		ppi: 300,
 		widthInPixels: null,
 		heightInPixels: null,
 		unit: "mm",
@@ -399,8 +399,8 @@ const k = () => {
 					" " +
 					c.unit +
 					"<br/>" +
-					c.dpi +
-					" dpi</p>"),
+					c.ppi +
+					" ppi</p>"),
 					console.log(c);
 			},
 			x = () => {
@@ -443,7 +443,7 @@ const k = () => {
 				width: e.width,
 				height: e.height,
 				unit: e.unit,
-				dpi: e.dpi,
+				ppi: e.ppi,
 				ratio: e.ratio,
 				CANVASP: t,
 				container: e.container,

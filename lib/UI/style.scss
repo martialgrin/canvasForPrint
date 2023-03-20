@@ -1,0 +1,126 @@
+#canvas-for-print_gui-container {
+	width: fit-content;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0.5rem;
+
+	transition: all 0.25s ease;
+	font-family: "Futura";
+	box-sizing: border-box;
+	color: white;
+	font-size: 0.8rem;
+	display: flex;
+	p {
+		margin: 0;
+	}
+	button,
+	input[type="submit"],
+	input[type="reset"] {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 1rem;
+		font: inherit;
+		cursor: pointer;
+		outline: inherit;
+	}
+	button:hover {
+		transform: scale(0.95);
+		// color: #000;
+	}
+
+	button:focus {
+	}
+
+	.canvas-for-print_gui-inner-container {
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+		border-radius: 1rem;
+		margin-right: 0.25rem;
+		background-color: #000;
+		transition: all 0.25s ease;
+	}
+
+	.canvas-for-print_hide {
+		flex-basis: 0%;
+		width: 0;
+		padding: 0;
+		opacity: 0;
+		margin: 0;
+		white-space: nowrap;
+	}
+
+	// LOADER
+
+	#canvas-for-print_gui-abort {
+		padding-right: 0;
+		padding: 0;
+		padding-left: 1rem;
+		border-left: 1px solid white;
+		border-radius: 0;
+	}
+
+	#canvas-for-print_gui-is-downloading {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.spinner {
+		width: 1rem;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	.spinner > div {
+		width: 0.33rem;
+		height: 0.33rem;
+		background-color: #fff;
+
+		border-radius: 100%;
+		display: inline-block;
+		-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+		animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	}
+
+	.spinner .bounce1 {
+		-webkit-animation-delay: -0.32s;
+		animation-delay: -0.32s;
+	}
+
+	.spinner .bounce2 {
+		-webkit-animation-delay: -0.16s;
+		animation-delay: -0.16s;
+	}
+
+	@-webkit-keyframes sk-bouncedelay {
+		0%,
+		80%,
+		100% {
+			-webkit-transform: scale(0);
+		}
+		40% {
+			-webkit-transform: scale(1);
+		}
+	}
+
+	@keyframes sk-bouncedelay {
+		0%,
+		80%,
+		100% {
+			-webkit-transform: scale(0);
+			transform: scale(0);
+		}
+		40% {
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+	}
+}
+
+#canvas-for-print_gui-save:has(#canvas-for-print_gui-abort:hover) {
+	background-color: #f00 !important;
+}
