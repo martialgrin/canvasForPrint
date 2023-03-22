@@ -1,4 +1,45 @@
-# canvasForPrint
+# @martialgrin/canvasForPrint
+
+CanvasForPrint is library to create and export easily your canvas for high resolution output.
+
+##Installation
+
+### NPM install
+
+```sh
+npm install canvas-for-print
+```
+
+```js
+import canvasForPrint from "canvas-for-print";
+```
+
+### CDN install
+
+```html
+<link
+	href="https://unpkg.com/canvas-for-print@latest/dist/canvas-for-print.cjs.css"
+	rel="stylesheet"
+/>
+<script src="https://unpkg.com/canvas-for-print@latest/dist/canvas-for-print.umd.js"></script>
+```
+
+
+
+```js
+
+```
+
+##Current Features##
+
+###saving canvas as PNG
+
+```js
+CanvasForPrint.saveCanvas();
+```
+
+- Export a single frame or a sequence
+-
 
 This function initializes a canvas element and returns an object with various properties and methods related to the canvas.
 

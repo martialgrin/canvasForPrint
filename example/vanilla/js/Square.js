@@ -18,7 +18,7 @@ class Square {
 	draw() {
 		this.ctx.save();
 		this.ctx.translate(this.x, this.y);
-		this.ctx.rotate(this.numInArray / 5);
+		this.ctx.rotate(((this.numInArray / 5) * this.row) / 1000);
 		this.ctx.fillStyle = this.color;
 		this.ctx.fillRect(this.width / 2, this.height / 2, this.width, this.height);
 		this.ctx.fill();

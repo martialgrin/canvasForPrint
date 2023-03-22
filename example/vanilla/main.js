@@ -5,10 +5,11 @@ window.onload = () => {
 
 	const canvas = CanvasForPrint({
 		container,
-		width: 130,
+		width: 100,
 		height: 140,
-		unit: "mm",
+		unit: "cm",
 		ppi: "300",
+		mode: "sequence",
 	});
 
 	canvas.create();
