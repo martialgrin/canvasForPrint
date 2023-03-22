@@ -2,15 +2,16 @@ window.onload = () => {
 	const container = document.getElementById("app");
 	const pane = new Tweakpane.Pane();
 	settingsInit(pane);
-	console.log(window);
 
-	const canvas = canvasForPrint({
+	const canvas = CanvasForPrint({
 		container,
-		width: 896,
-		height: 1280,
+		width: 130,
+		height: 140,
 		unit: "mm",
-		ppi: "72",
+		ppi: "300",
 	});
+
+	canvas.create();
 
 	const generator = new App({ canvas, pane });
 

@@ -2,20 +2,16 @@ let cPrint, canvas, container, pane;
 let frame = 0;
 
 function setupCanvasForPrint() {
-	console.log(
-		"%c P5 Example of canvas for print library",
-		"background: #00f; color: #bada55"
-	);
 	cPrint = CanvasForPrint({
 		container,
 		p5Mode: true,
 		width: 10,
-		height: 20,
+		height: 10,
 		unit: "cm",
 		ppi: "300",
 		fileName: "p5-example",
 		mode: "sequence",
-		recordingFrames: { start: 90, end: 100, current: 0 },
+		recordingFrames: { start: 90, end: 1000, current: 0 },
 	});
 }
 
@@ -24,7 +20,6 @@ function setup() {
 	settingsInit(pane);
 	container = document.getElementById("app");
 	setupCanvasForPrint();
-
 	canvas = createCanvas(cPrint.widthInPixels, cPrint.heightInPixels);
 	canvas.parent(container);
 	// PUT the canvas created into the canvas for print library
@@ -53,6 +48,7 @@ function draw() {
 }
 
 function update() {
+	cPrint.setFileName(PARAMS.fileName);
 	fill(PARAMS.color);
 	rect(0, 0, width, height);
 	fill(0, 0, 255);
