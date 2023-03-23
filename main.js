@@ -17,8 +17,6 @@ window.onload = () => {
 
 	let color = 0;
 
-	canvas.setFileName("yo le rap");
-
 	canvas.create();
 
 	canvas.on("saved", () => {

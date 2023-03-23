@@ -3,6 +3,7 @@ import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import css from "rollup-plugin-import-css";
 import scss from "rollup-plugin-scss";
+import minify from "rollup-plugin-minify";
 
 export default {
 	input: ["lib/index.js"],
@@ -23,7 +24,7 @@ export default {
 		},
 		{
 			format: "cjs",
-			file: "dist/canvas-for-print.cjs.js",
+			file: "dist/canvas-for-print.min.js",
 			sourcemap: true,
 		},
 	],
@@ -32,5 +33,6 @@ export default {
 		terser(),
 		commonjs(),
 		scss({ fileName: "bundle.css" }),
+		minify({ iife: "iife.min.js", cjs: "cjs.min.js" }),
 	],
 };

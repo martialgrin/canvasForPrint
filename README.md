@@ -1,20 +1,24 @@
-# @martialgrin/canvasForPrint
+# @martialgrin/CanvasForPrint
 
-CanvasForPrint is library to create and export easily your canvas for high resolution output.
+CanvasForPrint is a little library to create and export easily your picture or sequence canvas in high resolution.
+
+```diff
+- Under construction, some bugs can appears, report them into the issues
+```
 
 ##Installation
 
-### NPM install
+#### NPM install
 
 ```sh
 npm install canvas-for-print
 ```
 
 ```js
-import canvasForPrint from "canvas-for-print";
+import CanvasForPrint from "canvas-for-print";
 ```
 
-### CDN install
+#### CDN install
 
 ```html
 <link
@@ -24,85 +28,84 @@ import canvasForPrint from "canvas-for-print";
 <script src="https://unpkg.com/canvas-for-print@latest/dist/canvas-for-print.umd.js"></script>
 ```
 
+---
 
-
-```js
-
-```
-
-##Current Features##
-
-###saving canvas as PNG
+## initialisation
 
 ```js
-CanvasForPrint.saveCanvas();
+const cPrint = CanvasForPrint({
+	...settings,
+});
+
+cPrint.create();
 ```
 
-- Export a single frame or a sequence
--
+#### settings table
 
-This function initializes a canvas element and returns an object with various properties and methods related to the canvas.
+| type        | label           | Description                                                                                                                |
+| ----------- | --------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| number      | width           | width of your desired canvas \|\| default: `210 `                                                                          |
+| number      | height          | height of your desired canvas \|\| default: `297`                                                                          |
+| number      | ppi             | resolution of the canvas in ppi \|\| default: `300`                                                                        |
+| string      | unit            | unit of measure of the canvas \|\| default: `"mm"`                                                                         |
+| DOM Element | container       | container of your canvas \|\| default: `document.body`                                                                     |
+| string      | id              | id of your canvas \|\| default: `"canvas-for-print"`                                                                       |
+| string      | context         | context of your canvas \|\| default: `"2d"`                                                                                |
+| string      | fileName        | fileName of your file when you save it \|\| default: `"CanvasForPrint"`                                                    |
+| string      | mode            | mode for the saving file \|\| default: `"picture"`                                                                         |
+| object      | recordingFrames | _!only for sequence mode_ starting & ending recording frame of the canvas \|\| default: `{start:0, end: 100, current: 0 }` |
+| boolean     | p5Mode          | turn to true if you use p5 \|\| default: `false`                                                                           |
+| boolean     | GUI             | To display the GUI \|\| default: `true`                                                                                    |
 
-Parameters
-userSettings (Object): An object containing the user-defined settings for the canvas. The following properties can be set:
+##Current Features
 
-width (Number): The width of the canvas in the unit set (default: mm).
+####save canvas
+can save frame or sequence in `png` format with transparent support
 
-height (Number): The height of the canvas in the unit set (default: mm).
+```js
+cPrint.saveCanvas();
+```
 
-ppi (Number): The resolution of the canvas in ppi (default: 300).
+####context
+get the context of the canvas
 
-unit (String): The unit of measure for the canvas (default: mm).
+```js
+const ctx = cPrint.ctx;
+```
 
-container (Object): The container element for the canvas (default: document.body).
+####Saving Mode
 
-Returns
-An object with the following properties:
+##### Picture Mode
 
-p5Mode (Boolean): A flag to determine whether p5.js mode is enabled (default: false).
+```js
+cPrint.setMode(${mode}, options)
+```
 
-elem (Object): The canvas element created by the function.
+##### Mode supported
 
-width (Number): The width of the canvas in the unit set (default: mm).
+```js
+cPrint.setMode("picture");
+```
 
-height (Number): The height of the canvas in the unit set (default: mm).
+```js
+cPrint.setMode("sequence", { start: 0, end: 100 });
+```
 
-ppi (Number): The resolution of the canvas in ppi (default: 300).
+## | type | label | Description
 
-widthInPixels (Number): The width of the canvas in pixels.
+```js
+cPrint.setMode("picture");
+```
 
-heightInPixels (Number): The height of the canvas in pixels.
+##### Sequence Mode
 
-unit (String): The unit of measure for the canvas (default: mm).
+```js
+cPrint.setMode("sequence");
+```
 
-ratio (Number): The ratio of the canvas width to its height.
+####setting fileName
+get the context of the canvas
 
-mode (String): The mode of the canvas (default: picture).
-
-recordingFrames (Object): An object containing the start, end, and current frame for recording (default: { start: 0, end: 100, current: 0 }).
-
-container (Object): The container element for the canvas (default: document.body).
-
-id (String): The ID of the canvas element (default: canvas-for-print).
-
-pixelDensity (Number): The pixel density of the canvas (default: window.devicePixelRatio).
-
-context (String): The context of the canvas (default: 2d).
-
-on (Function): A function for adding event listeners to the canvas.
-
-emit (Function): A function for emitting events from the canvas.
-
-size (Object): An object containing the size of the canvas in pixels and the container element.
-
-initListener (Function): A function for initializing the event listeners for the canvas.
-
-saveFileHandler (Function): A function for handling the saving of the canvas file.
-
-init (Function): A function for initializing the canvas and the UI.
-
-create (Function): A function for creating the canvas element.
-
-saveCanvas (Function): A function for saving the canvas file.
-
-ctx (Object): The 2D rendering context of the canvas element.
+```js
+cPrint.setFileName();
+```
