@@ -9,7 +9,7 @@ window.onload = () => {
 		height: 128,
 		unit: "cm",
 		ppi: "300",
-		mode: "sequence",
+		mode: "picture",
 		recordingFrames: { start: 5, end: endRecordingFrames, current: 0 },
 	});
 
