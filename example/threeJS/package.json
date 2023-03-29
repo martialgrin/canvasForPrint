@@ -1,0 +1,18 @@
+{
+  "name": "threejsexample",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "canvas-for-print": "^0.1.5",
+    "three": "^0.150.1"
+  }
+}
