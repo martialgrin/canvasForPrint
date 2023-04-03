@@ -59,8 +59,8 @@ cPrint.create();
 
 ##Current Features
 
-####save canvas
-can save frame or sequence in `png` format with transparent support
+####Save Canvas
+save frame or sequence in `png` format with transparent support
 
 ```js
 cPrint.saveCanvas();
@@ -75,37 +75,51 @@ const ctx = cPrint.ctx;
 
 ####Saving Mode
 
-##### Picture Mode
-
-```js
-cPrint.setMode(${mode}, options)
-```
-
 ##### Mode supported
 
 ```js
 cPrint.setMode("picture");
 ```
 
-```js
-cPrint.setMode("sequence", { start: 0, end: 100 });
-```
-
-## | type | label | Description
-
-```js
-cPrint.setMode("picture");
-```
-
-##### Sequence Mode
+_save juste one frame of your canvas._.
 
 ```js
 cPrint.setMode("sequence");
 ```
 
-####setting fileName
+_save a sequence related to recordingFrames settings_.
+
+####Setting fileName
 get the context of the canvas
 
 ```js
-cPrint.setFileName();
+cPrint.setFileName("your-filename");
 ```
+
+### Listeners
+
+A set of listeners to available
+
+```js
+cPrint.on("resize",${your-code});
+```
+
+when canvas is resized
+
+```js
+cPrint.on("frameSaved", ${your-code});
+```
+
+when canvas is saved, use this to call update function on sequence mode
+
+```js
+cPrint.on("saved", ${your-code});
+```
+
+when all frames requested are saved
+
+```js
+cPrint.on("startSaving", ${your-code});
+```
+
+before entering in saving mode
