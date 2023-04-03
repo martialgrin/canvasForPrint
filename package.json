@@ -1,18 +1,24 @@
 {
 	"name": "canvas-for-print",
 	"private": false,
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"main": "lib/index.js",
 	"type": "module",
 	"files": [
 		"dist",
 		"lib"
 	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/martialgrin/canvasForPrint.git"
+	},
+	"author": "Martial Grin <contact@martialgrin.ch>",
 	"scripts": {
 		"dev": "vite",
 		"build": "rollup -c",
 		"preview": "vite preview"
 	},
+	"license": "ISC",
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^24.0.1",
 		"@rollup/plugin-node-resolve": "^15.0.1",
