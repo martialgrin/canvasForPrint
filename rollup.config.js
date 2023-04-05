@@ -1,7 +1,6 @@
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
-import css from "rollup-plugin-import-css";
 import scss from "rollup-plugin-scss";
 import minify from "rollup-plugin-minify";
 import postcss from "rollup-plugin-postcss";
