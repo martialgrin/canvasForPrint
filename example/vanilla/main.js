@@ -7,9 +7,9 @@ window.onload = () => {
 		container,
 		width: 100,
 		height: 140,
-		unit: "cm",
+		unit: "mm",
 		ppi: "300",
-		mode: "sequence",
+		mode: "picture",
 	});
 
 	canvas.create();
