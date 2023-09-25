@@ -57,23 +57,23 @@ cPrint.create();
 | boolean     | p5Mode          | turn to true if you use p5 \|\| default: `false`                                                                           |
 | boolean     | GUI             | To display the GUI \|\| default: `true`                                                                                    |
 
-##Current Features
+## Current Features
 
-####Save Canvas
+#### Save Canvas
 save frame or sequence in `png` format with transparent support
 
 ```js
 cPrint.saveCanvas();
 ```
 
-####context
+#### context
 get the context of the canvas
 
 ```js
 const ctx = cPrint.ctx;
 ```
 
-####Saving Mode
+#### Saving Mode
 
 ##### Mode supported
 
@@ -89,7 +89,7 @@ cPrint.setMode("sequence");
 
 _save a sequence related to recordingFrames settings_.
 
-####Setting fileName
+#### Setting fileName
 get the context of the canvas
 
 ```js
