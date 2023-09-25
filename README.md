@@ -2,10 +2,6 @@
 
 CanvasForPrint is a little library to create and export easily your picture or sequence canvas in high resolution.
 
-```diff
-- Under construction, some bugs can appears, report them into the issues
-```
-
 ##Installation
 
 #### NPM install
